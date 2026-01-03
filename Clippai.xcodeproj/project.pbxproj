@@ -39,15 +39,15 @@
 		52A841389E3D4F58B47A5186 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		565DBDBB9A084CFC9B6DBD93 /* PasteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteController.swift; sourceTree = "<group>"; };
 		7579F66C2F754253B6616B16 /* AppNameResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNameResolver.swift; sourceTree = "<group>"; };
+		7D125A88B548458F84E1F3BA /* Clippai.Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clippai.Debug.entitlements; sourceTree = "<group>"; };
 		AE06A488AC6F45A3A8C856DD /* GlassStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassStyles.swift; sourceTree = "<group>"; };
 		B440163D763F4BA1B5B80FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6A566BADB7F4AC1BDF8F08B /* ClipboardItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardItemFactory.swift; sourceTree = "<group>"; };
 		D18136BFA26D468FB55B0279 /* ClippaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippaiApp.swift; sourceTree = "<group>"; };
 		D73FFA354CCD484E87532B59 /* ClipboardHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardHasher.swift; sourceTree = "<group>"; };
+		DE8BC5574F444F94A34A79A4 /* Clippai.Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clippai.Release.entitlements; sourceTree = "<group>"; };
 		E63FC9789B9743E4922171AE /* ClipboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardStore.swift; sourceTree = "<group>"; };
 		E8599B4391594C9FBB1A3878 /* MainWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowView.swift; sourceTree = "<group>"; };
-		7D125A88B548458F84E1F3BA /* Clippai.Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clippai.Debug.entitlements; sourceTree = "<group>"; };
-		DE8BC5574F444F94A34A79A4 /* Clippai.Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clippai.Release.entitlements; sourceTree = "<group>"; };
 		F1989B1ED31F4403A35B218A /* QuickPastePanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPastePanelController.swift; sourceTree = "<group>"; };
 		FC6B6B976E0E4738B9F51C83 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +239,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Clippai/Clippai.Debug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -250,6 +251,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developcu.clippai;
 				PRODUCT_NAME = clippai;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.9;
 			};
 			name = Debug;
@@ -260,6 +262,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Clippai/Clippai.Release.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -271,6 +274,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developcu.clippai;
 				PRODUCT_NAME = clippai;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
