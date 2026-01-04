@@ -6,9 +6,13 @@ struct ClippaiApp: App {
     @StateObject private var viewModel = AppViewModel()
 
     var body: some Scene {
-        MenuBarExtra("Clippai", systemImage: "clipboard") {
+        MenuBarExtra {
             MenuBarContent()
                 .environmentObject(viewModel)
+        } label: {
+            Image("MenuBarIcon")
+                .renderingMode(.original)
+                .accessibilityLabel("Clippai")
         }
         WindowGroup("Clippai", id: "main") {
             MainWindowView()
