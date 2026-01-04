@@ -62,6 +62,11 @@ final class AppViewModel: ObservableObject {
         store.removeItems(at: offsets)
     }
 
+    func clearAllHistory() {
+        store.clearAll()
+        selectedItemId = nil
+    }
+
     func selectFirstIfNeeded() {
         guard selectedItemId == nil else { return }
         selectedItemId = filteredItems.first?.id

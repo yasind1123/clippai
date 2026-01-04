@@ -33,6 +33,9 @@ private struct MenuBarContent: View {
             Button("Quick Paste") {
                 viewModel.showQuickPastePanel()
             }
+            Button("Clear All") {
+                viewModel.clearAllHistory()
+            }
             Divider()
             Button("Quit") {
                 NSApp.terminate(nil)

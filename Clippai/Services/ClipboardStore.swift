@@ -70,6 +70,13 @@ final class ClipboardStore: ObservableObject {
         save()
     }
 
+    func clearAll() {
+        let removed = items
+        items.removeAll()
+        removed.forEach { cleanup(item: $0) }
+        save()
+    }
+
     func item(for id: UUID?) -> ClipboardItem? {
         guard let id else { return nil }
         return items.first { $0.id == id }
