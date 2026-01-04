@@ -95,22 +95,24 @@ struct QuickPastePanelView: View {
             return event
         }
     }
+
 }
 
 private struct QuickPasteRowView: View {
     let item: ClipboardItem
     let isSelected: Bool
+    private var layoutScale: CGFloat { isSelected ? 1.32 : 1 }
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: scaled(12)) {
             previewIcon
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: scaled(4)) {
                 Text(primaryText)
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .font(.system(size: scaled(14), weight: .semibold, design: .rounded))
                     .lineLimit(1)
                 Text(secondaryText)
-                    .font(.caption)
+                    .font(.system(size: scaled(12), weight: .regular, design: .rounded))
                     .foregroundColor(.secondary)
                     .lineLimit(1)
             }
@@ -118,19 +120,19 @@ private struct QuickPasteRowView: View {
             Spacer()
 
             Text(item.createdAt, style: .time)
-                .font(.caption2)
+                .font(.system(size: scaled(11), weight: .regular, design: .rounded))
                 .foregroundColor(.secondary)
         }
-        .padding(10)
+        .padding(scaled(10))
         .background(GlassRowBackground(isSelected: isSelected))
     }
 
     private var previewIcon: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
+            RoundedRectangle(cornerRadius: scaled(10), style: .continuous)
                 .fill(.thinMaterial)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    RoundedRectangle(cornerRadius: scaled(10), style: .continuous)
                         .stroke(Color.white.opacity(0.2), lineWidth: 1)
                 )
 
@@ -138,15 +140,15 @@ private struct QuickPasteRowView: View {
                 Image(nsImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    .padding(4)
+                    .clipShape(RoundedRectangle(cornerRadius: scaled(8), style: .continuous))
+                    .padding(scaled(4))
             } else {
                 Image(systemName: item.type == .text ? "doc.plaintext" : "photo")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: scaled(16), weight: .semibold))
                     .foregroundColor(.primary)
             }
         }
-        .frame(width: 40, height: 40)
+        .frame(width: scaled(40), height: scaled(40))
     }
 
     private var primaryText: String {
@@ -163,5 +165,9 @@ private struct QuickPasteRowView: View {
             sourceName: item.sourceAppName,
             bundleId: item.sourceAppBundleId
         ) ?? "Unknown app"
+    }
+
+    private func scaled(_ value: CGFloat) -> CGFloat {
+        value * layoutScale
     }
 }

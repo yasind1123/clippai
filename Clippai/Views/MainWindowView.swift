@@ -48,46 +48,47 @@ struct MainWindowView: View {
             isVisible = true
         }
     }
+
 }
 
 private struct ClipboardRowView: View {
     let item: ClipboardItem
     let isSelected: Bool
+    private var layoutScale: CGFloat { isSelected ? 1.32 : 1 }
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: scaled(12)) {
             thumbnail
 
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: scaled(6)) {
                 Text(item.type == .text ? "Text" : "Image")
-                    .font(.system(size: 13, weight: .semibold, design: .rounded))
+                    .font(.system(size: scaled(13), weight: .semibold, design: .rounded))
                 Text(itemPreview)
-                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                    .font(.system(size: scaled(13), weight: .regular, design: .rounded))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }
 
             Spacer()
 
-            VStack(alignment: .trailing, spacing: 4) {
+            VStack(alignment: .trailing, spacing: scaled(4)) {
                 Text(item.createdAt, style: .time)
-                    .font(.caption2)
+                    .font(.system(size: scaled(11), weight: .regular, design: .rounded))
                 Text(item.createdAt, style: .relative)
-                    .font(.caption2)
+                    .font(.system(size: scaled(11), weight: .regular, design: .rounded))
             }
             .foregroundColor(.secondary)
         }
-        .padding(12)
+        .padding(scaled(12))
         .background(GlassRowBackground(isSelected: isSelected))
-        .animation(.easeInOut(duration: 0.2), value: isSelected)
     }
 
     private var thumbnail: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
+            RoundedRectangle(cornerRadius: scaled(10), style: .continuous)
                 .fill(.thinMaterial)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    RoundedRectangle(cornerRadius: scaled(10), style: .continuous)
                         .stroke(Color.white.opacity(0.2), lineWidth: 1)
                 )
 
@@ -95,15 +96,15 @@ private struct ClipboardRowView: View {
                 Image(nsImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    .padding(4)
+                    .clipShape(RoundedRectangle(cornerRadius: scaled(8), style: .continuous))
+                    .padding(scaled(4))
             } else {
                 Image(systemName: item.type == .text ? "doc.plaintext" : "photo")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: scaled(18), weight: .semibold))
                     .foregroundColor(.primary)
             }
         }
-        .frame(width: 44, height: 44)
+        .frame(width: scaled(44), height: scaled(44))
     }
 
     private var itemPreview: String {
@@ -116,6 +117,10 @@ private struct ClipboardRowView: View {
                 bundleId: item.sourceAppBundleId
             ) ?? "Image capture"
         }
+    }
+
+    private func scaled(_ value: CGFloat) -> CGFloat {
+        value * layoutScale
     }
 }
 

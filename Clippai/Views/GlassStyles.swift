@@ -105,13 +105,17 @@ struct GlassRowBackground: View {
     let isSelected: Bool
 
     var body: some View {
-        GlassSurface(cornerRadius: 12, highlightOpacity: isSelected ? 0.34 : 0.1)
-            .shadow(
-                color: Color.black.opacity(isSelected ? 0.24 : 0.14),
-                radius: isSelected ? 14 : 8,
-                x: 0,
-                y: isSelected ? 8 : 5
-            )
+        if isSelected {
+            Color.clear
+        } else {
+            GlassSurface(cornerRadius: 12, highlightOpacity: 0.1)
+                .shadow(
+                    color: Color.black.opacity(0.14),
+                    radius: 8,
+                    x: 0,
+                    y: 5
+                )
+        }
     }
 }
 
